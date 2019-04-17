@@ -24,11 +24,11 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
-//	@RequestMapping(value="/add",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
-//		employee=(Employee) employeeService.addEmployee(employee);
-//		return new ResponseEntity<Employee>(employee,HttpStatus.CREATED);
-//	}
+	@RequestMapping(value="/addEmployee",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Employee> addEmployees(@RequestBody Employee employee,HttpServletResponse response){
+		employee=(Employee) employeeService.addEmployee(employee,response);
+		return new ResponseEntity<Employee>(employee,HttpStatus.CREATED);
+	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String,Object> addEmployee(@RequestBody Employee employee,HttpServletResponse response){
@@ -44,5 +44,7 @@ public class EmployeeController {
 		}
 		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 	}
+	
+	
 
 }
